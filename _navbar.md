@@ -1,5 +1,5 @@
 * [直播工具](/zbgj/)
-    * [未成年提示](/zbgj/)
+    * [未成年提示](https://livelaw.netlify.app/wcnts.html)
 * [国家法律](/gjfl/)
 * [政府规章](/zfgz/)
 * [平台政策](/ptzc/)
