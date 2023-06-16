@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>特效文字显示</title>
+    <style>
+        /* 普通配色 */
+        .normal {
+            font-family: 'Arial Black', sans-serif;
+            font-size: 40px;
+            color: #100d0d;
+            text-shadow: 0 0 10px #ffffff;
+        }
+
+        /* 活泼字体+活泼配色 */
+        .lively {
+            font-family: 'Arial Black', sans-serif;
+            font-size: 50px;
+            color: #ff6f00;
+            text-shadow: 0 0 10px rgba(255, 111, 0, 0.5);
+        }
+
+        /* 可爱字体+马卡龙配色 */
+        .cute {
+            font-family: 'Arial Black', cursive;
+            font-size: 50px;
+            color: #ff80ed;
+            animation: glowing 2s infinite;
+        }
+
+        @keyframes glowing {
+            0% {
+                text-shadow: 0 0 10px rgba(255, 128, 237, 0);
+            }
+            50% {
+                text-shadow: 0 0 10px rgba(255, 128, 237, 0.5);
+            }
+            100% {
+                text-shadow: 0 0 10px rgba(255, 128, 237, 0);
+            }
+        }
+
+        /* 隐藏表单 */
+        .hidden {
+            display: none;
+        }
+
+        /* 文字样式 */
+        #output-text {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 20px;
+            background-color: transparent;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <form id="text-form">
+        <p>注意:如果在OBS里直接用浏览器组件,<br>
+            1.可能会无法输入中文,解决方法是在外面输入然后复制进去.<br>
+            2.可能下拉框无法展开,可以用键盘上的上下键选择.</p>
+        <input type="text" id="text-input" placeholder="输入文字" value="未成年人请不要打赏捏!">
+        <select id="style-select">
+            <option value="normal">普通配色</option>
+            <option value="lively">活泼</option>
+            <option value="cute">可爱</option>
+        </select>
+        <input type="range" id="font-size-range" min="10" max="50" step="1" value="20">
+        <input type="range" id="opacity-range" min="0" max="1" step="0.1" value="1">
+        <button type="button" onclick="showText()">显示文字</button>
+    </form>
+    <p id="output-text" class="hidden"></p>
+
+    <script>
+        function showText() {
+            var inputText = document.getElementById("text-input").value;
+            var styleSelect = document.getElementById("style-select");
+            var fontSizeRange = document.getElementById("font-size-range");
+            var opacityRange = document.getElementById("opacity-range");
+            var outputText = document.getElementById("output-text");
+            var textForm = document.getElementById("text-form");
+
+            outputText.innerHTML = inputText;
+            outputText.className = styleSelect.value;
+            outputText.style.fontSize = fontSizeRange.value + "px";
+            outputText.style.opacity = opacityRange.value;
+            outputText.classList.remove("hidden");
+            textForm.classList.add("hidden");
+        }
+    </script>
+</body>
+</html>
