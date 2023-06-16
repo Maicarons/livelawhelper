@@ -1,4 +1,6 @@
 # [直播法律助手](https://livelaw.netlify.app/)
+
+![icon](法icon.png)
 ---
 
 版本: Alpha v0.0.1
